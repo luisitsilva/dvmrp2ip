@@ -1,0 +1,19 @@
+[Unit]
+Description=DVMRP Route Listener for FRR/ZAPI integration
+After=frr.service
+Requires=frr.service
+Wants=network.target
+
+[Service]
+Type=simple
+User=frr
+Group=frr
+ExecStart=/usr/local/bin/dvmrp-listener.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
